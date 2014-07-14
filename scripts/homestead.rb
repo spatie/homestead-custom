@@ -7,7 +7,7 @@ class Homestead
     # Configure A Private Network IP
     config.vm.network :private_network, ip: settings["ip"] ||= "192.168.10.10"
     
-    #SPATIE-modification use public network
+    # SPATIE-modification use public network
     config.vm.network :public_network, ip: settings["public_ip"], bridge: 'en0: Ethernet'
 
     # Configure A Few VirtualBox Settings
@@ -43,8 +43,8 @@ class Homestead
       s.inline = "cp /vagrant/aliases /home/vagrant/.bash_aliases"
     end
 
-#SPATIE-MODIFICATION: USE NFS
-# Register All Of The Configured Shared Folders
+    # SPATIE-MODIFICATION: USE NFS
+    # Register All Of The Configured Shared Folders
     settings["folders"].each do |folder|
     	config.vm.synced_folder folder["map"], folder["to"],
     		id: folder["map"],
