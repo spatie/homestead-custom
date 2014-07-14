@@ -1,7 +1,7 @@
 # Laravel Homestead Custom
 
 The official Laravel local development environment with these customizations:
-- use of a public ip address in order to access the testsite on other devices on the network
+- use of a public ip address in order to access sites running on the VM on other devices on the public network
 - use of nfs to greatly improve performance
 - addition of an example .yaml file
 
