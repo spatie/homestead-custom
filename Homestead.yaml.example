@@ -1,0 +1,21 @@
+---
+public_ip: "192.168.1.210"
+memory: 2048
+cpus: 1
+
+authorize: /Users/me/.ssh/id_dsa.pub
+
+keys:
+    - /Users/me/.ssh/id_dsa
+
+folders:
+    - map: /Users/me/siteurl
+      to: /home/vagrant/siteurl
+
+sites:
+    - map: site.xxx.xxx.xxx.xxx.xip.io
+      to: /home/vagrant/siteurl/public
+
+variables:
+    - key: APP_ENV
+      value: local
