@@ -37,6 +37,16 @@ class Homestead
         s.args = [File.read(File.expand_path(key)), key.split('/').last]
       end
     end
+    
+     # SPATIE modification: Copy The SSH config file  To The Box
+     config.vm.provision "shell" do |s|
+       s.privileged = false
+       s.inline = "echo \"$1\" > /home/vagrant/.ssh/config"
+       s.args = [File.read(File.expand_path('~/.ssh/config'))]
+     end
+    
+    # SPATIE modification: enable ssh forward
+    config.ssh.forward_agent = true
 
     # Copy The Bash Aliases
     config.vm.provision "shell" do |s|
