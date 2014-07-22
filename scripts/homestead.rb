@@ -79,5 +79,9 @@ class Homestead
         end
       end
     end
+    
+    #SPATIE-MODIFICATION: custom scripts
+    config.vm.provision "shell", path: "./scripts/customizations.sh"
+    
   end
 end
