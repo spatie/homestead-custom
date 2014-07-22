@@ -7,6 +7,8 @@ The official Laravel local development environment with these customizations:
 - copy ~/.ssh/config to vagrant box during provisioning
 - imagick
 - sass/compass/animation
+- ruby 2.1.2
+- oh-my-zsh
 
 
 The official Homestead documentation [is located here](http://laravel.com/docs/homestead?version=4.2).
