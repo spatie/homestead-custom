@@ -3,7 +3,7 @@ alias ...="cd ../.."
 
 alias h='cd ~'
 alias c='clear'
-alias project-init="composer install;php artisan local:init;bundle install;npm install"
+alias project-init="composer install;php artisan local:init;bundle install;npm install;gulp compile"
 
 function serve() {
 	if [[ "$1" && "$2" ]]
