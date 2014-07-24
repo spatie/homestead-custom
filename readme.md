@@ -9,6 +9,7 @@ The official Laravel local development environment with these customizations:
 - sass/compass/animation
 - ruby 2.1.2
 - oh-my-zsh
+- provisioning will copy ~/.ssh/config from your local machine to the VM.
 
 
 The official Homestead documentation [is located here](http://laravel.com/docs/homestead?version=4.2).
