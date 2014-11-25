@@ -1,20 +1,24 @@
 ---
-public_ip: "192.168.1.21X"
+ip: "192.168.10.10"
 memory: 2048
 cpus: 1
 
-authorize: /Users/me/.ssh/id_dsa.pub
+authorize: ~/.ssh/id_dsa.pub
 
 keys:
-    - /Users/me/.ssh/id_dsa
+    - ~/.ssh/id_dsa
 
 folders:
-    - map: /Users/me/siteurl
-      to: /home/vagrant/siteurl
+    - map: ~/Code
+      to: /home/vagrant/yoursite.com
+      type: nfs
 
 sites:
-    - map: site.xxx.xxx.xxx.xxx.xip.io
-      to: /home/vagrant/siteurl/public
+    - map: sitename.192.168.10.10.xip.io
+      to: /home/vagrant/yoursite.com/public
+
+databases:
+    - homestead
 
 variables:
     - key: APP_ENV
