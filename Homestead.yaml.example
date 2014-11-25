@@ -14,7 +14,7 @@ folders:
       type: nfs
 
 sites:
-    - map: sitename.192.168.10.10.xip.io
+    - map: yoursite.com.192.168.10.10.xip.io
       to: /home/vagrant/yoursite.com/public
 
 databases:
