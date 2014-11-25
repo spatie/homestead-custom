@@ -55,6 +55,6 @@ if [ ! -f /usr/local/extra_homestead_software_installed ]; then
     #    
     touch /usr/local/extra_homestead_software_installed
 else    
-	echo "extra software already installed... moving on...
+    echo "extra software already installed... moving on..."
 fi
 
