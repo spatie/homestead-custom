@@ -55,6 +55,11 @@ if [ ! -f /usr/local/extra_homestead_software_installed ]; then
     #
     echo "alias project-init='composer install;php artisan local:init;bundle install;npm install;gulp compile'" >> /home/vagrant/.zshrc
     
+    
+    
+    #
+    # remember that the extra software is installed
+    #    
     touch /usr/local/extra_homestead_software_installed
 else    
 	echo "extra software already installed... moving on...
