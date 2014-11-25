@@ -1,4 +1,4 @@
-# Laravel Homestead Custom
+# Laravel Homestead customizations
 
 An after.sh file for a Homestead v2 installation. You'll need to put this in your ~/.homestead directory
 
