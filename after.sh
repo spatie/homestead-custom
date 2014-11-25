@@ -8,12 +8,10 @@
 if [ ! -f /usr/local/extra_homestead_software_installed ]; then
 	echo 'installing some extra software'
 
-
     #
     # install zsh
     #
     apt-get install zsh -y
-    
     
     #
     # install oh my zhs
@@ -23,13 +21,11 @@ if [ ! -f /usr/local/extra_homestead_software_installed ]; then
     cp /home/vagrant/.oh-my-zsh/templates/zshrc.zsh-template /home/vagrant/.zshrc
     chsh -s /usr/bin/zsh vagrant
     
-    
     #
     # install imagemagick
     #
     sudo apt-get install imagemagick -y
     sudo apt-get install php5-imagick -y
-    
     
     #
     # install rvm
@@ -37,7 +33,6 @@ if [ ! -f /usr/local/extra_homestead_software_installed ]; then
     sudo gem install sass
     gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
     curl -L https://get.rvm.io | bash -s stable
-    
     
     #
     # install ruby 2.1.2
@@ -54,7 +49,6 @@ if [ ! -f /usr/local/extra_homestead_software_installed ]; then
     # aliases
     #
     echo "alias project-init='composer install;php artisan local:init;bundle install;npm install;gulp compile'" >> /home/vagrant/.zshrc
-    
     
     #
     # remember that the extra software is installed
