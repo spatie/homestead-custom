@@ -47,6 +47,8 @@ if [ ! -f /usr/local/extra_homestead_software_installed ]; then
     echo "source ~/.rvm/scripts/rvm" >> ~/.bashrc
     sudo chgrp -R vagrant /usr/local/rvm/gems/ruby-2.1.2/bin
     sudo chmod -R 770 /usr/local/rvm/gems/ruby-2.1.2/bin
+    sudo chgrp -R vagrant /usr/local/rvm/user
+    sudo chmod -R 770 /usr/local/rvm/user 
     
     #
     # aliases
