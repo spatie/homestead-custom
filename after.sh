@@ -45,10 +45,31 @@ if [ ! -f /usr/local/extra_homestead_software_installed ]; then
     sudo chgrp -R vagrant /usr/local/rvm/user
     sudo chmod -R 770 /usr/local/rvm/user 
     
+
+    # install elasticsearch (instructions copied from https://github.com/fideloper/Vaprobash/blob/master/scripts/elasticsearch.sh)	
+    # Set some variables
+    ELASTICSEARCH_VERSION=1.4.2 # Check http://www.elasticsearch.org/download/ for latest version
+
+    sudo apt-get install -qq openjdk-7-jre-headless
+
+    wget --quiet https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-$ELASTICSEARCH_VERSION.deb
+    sudo dpkg -i elasticsearch-$ELASTICSEARCH_VERSION.deb
+    rm elasticsearch-$ELASTICSEARCH_VERSION.deb
+
+    # Configure Elasticsearch for development purposes (1 shard/no replicas, don't allow it to swap at all if it can run without swapping)
+    sudo sed -i "s/# index.number_of_shards: 1/index.number_of_shards: 1/" /etc/elasticsearch/elasticsearch.yml
+    sudo sed -i "s/# index.number_of_replicas: 0/index.number_of_replicas: 0/" /etc/elasticsearch/elasticsearch.yml
+    sudo sed -i "s/# bootstrap.mlockall: true/bootstrap.mlockall: true/" /etc/elasticsearch/elasticsearch.yml
+    sudo service elasticsearch restart
+
+    # Configure to start up Elasticsearch automatically
+    sudo update-rc.d elasticsearch defaults 95 10
+    
     #
     # aliases
     #
     echo "alias project-init='composer install;php artisan local:init;bundle install;npm install;gulp compile'" >> /home/vagrant/.zshrc
+    echo "alias t='vendor/bin/codecept run'" >> /home/vagrant/.zshrc
     
     #
     # remember that the extra software is installed
