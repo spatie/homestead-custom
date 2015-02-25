@@ -6,8 +6,28 @@
 
 
 if [ ! -f /usr/local/extra_homestead_software_installed ]; then
-	echo 'installing some extra software'
 
+    echo "setting up swapspace (4GB)"
+
+    # Create the Swap file
+    fallocate -l 4G /swapfile
+
+    # Set the correct Swap permissions
+    chmod 600 /swapfile
+
+    # Setup Swap space
+    mkswap /swapfile
+
+    # Enable Swap space
+    swapon /swapfile
+
+    # Make the Swap file permanent
+    echo "/swapfile   none    swap    sw    0   0" | tee -a /etc/fstab
+
+    # Add some swap settings:
+    printf "vm.swappiness=10\nvm.vfs_cache_pressure=50" | tee -a /etc/sysctl.conf && sysctl -p
+
+    echo 'installing some extra software...'
     #
     # install zsh
     #
