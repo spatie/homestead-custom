@@ -28,6 +28,12 @@ if [ ! -f /usr/local/extra_homestead_software_installed ]; then
     ln -s /home/vagrant/.dotfiles/shell/.zshrc /home/vagrant/.zshrc    
     
     #
+    # set up global gitignore
+    #
+    git config --global core.excludesfile ~/.gitignore_global
+    echo ".DS_Store" > ~/.gitignore_global
+    
+    #
     # install imagemagick
     #
     sudo apt-get install imagemagick -y
