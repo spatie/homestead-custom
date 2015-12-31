@@ -56,7 +56,7 @@ if [ ! -f /usr/local/extra_homestead_software_installed ]; then
 
     # install elasticsearch (instructions copied from https://github.com/fideloper/Vaprobash/blob/master/scripts/elasticsearch.sh)	
     # Set some variables
-    #ELASTICSEARCH_VERSION=1.4.2 # Check http://www.elasticsearch.org/download/ for latest version
+    #ELASTICSEARCH_VERSION=2.1.1 # Check http://www.elasticsearch.org/download/ for latest version
 
     #sudo apt-get install -qq openjdk-7-jre-headless
 
