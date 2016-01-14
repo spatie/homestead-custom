@@ -28,6 +28,11 @@ if [ ! -f /usr/local/extra_homestead_software_installed ]; then
     ln -s /home/vagrant/.dotfiles/shell/.zshrc /home/vagrant/.zshrc    
     
     #
+    # make tab complete case insensitive
+    #
+    echo set completion-ignore-case on | sudo tee -a /etc/inputrc
+    
+    #
     # set up global gitignore
     #
     git config --global core.excludesfile ~/.gitignore_global
