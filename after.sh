@@ -53,6 +53,7 @@ if [ ! -f /usr/local/extra_homestead_software_installed ]; then
     make install
     rm -rf /tmp/imagick-3.4.0RC2*
     echo extension=imagick.so >> /etc/php/7.0/cli/php.ini
+    echo extension=imagick.so >> /etc/php/7.0/fpm/php.ini
     service php7.0-fpm restart
     service nginx restart   
     
