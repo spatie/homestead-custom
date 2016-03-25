@@ -8,6 +8,11 @@
 if [ ! -f /usr/local/extra_homestead_software_installed ]; then
 	echo 'installing some extra software'
 
+	
+    # We should be super user 
+    sudo -s 
+
+
     #
     # install zsh
     #
@@ -30,7 +35,7 @@ if [ ! -f /usr/local/extra_homestead_software_installed ]; then
     #
     # make tab complete case insensitive
     #
-    echo set completion-ignore-case on | sudo tee -a /etc/inputrc
+    echo set completion-ignore-case on | tee -a /etc/inputrc
     
     #
     # set up global gitignore
@@ -41,7 +46,7 @@ if [ ! -f /usr/local/extra_homestead_software_installed ]; then
     #
     # install imagemagick
     #
-    sudo apt-get install imagemagick -y
+    apt-get install imagemagick -y
     #sudo apt-get install php5-imagick -y
     apt-get install pkg-config libmagickwand-dev -y
     cd /tmp
@@ -64,20 +69,26 @@ if [ ! -f /usr/local/extra_homestead_software_installed ]; then
     # Set some variables
     ELASTICSEARCH_VERSION=2.1.1 # Check http://www.elasticsearch.org/download/ for latest version
 
-    sudo apt-get install -qq openjdk-7-jre-headless
+    apt-get install -qq openjdk-7-jre-headless
 
     wget --quiet https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-$ELASTICSEARCH_VERSION.deb
-    sudo dpkg -i elasticsearch-$ELASTICSEARCH_VERSION.deb
+    dpkg -i elasticsearch-$ELASTICSEARCH_VERSION.deb
     rm elasticsearch-$ELASTICSEARCH_VERSION.deb
 
     # Configure Elasticsearch for development purposes (1 shard/no replicas, don't allow it to swap at all if it can run without swapping)
-    sudo sed -i "s/# index.number_of_shards: 1/index.number_of_shards: 1/" /etc/elasticsearch/elasticsearch.yml
-    sudo sed -i "s/# index.number_of_replicas: 0/index.number_of_replicas: 0/" /etc/elasticsearch/elasticsearch.yml
-    sudo sed -i "s/# bootstrap.mlockall: true/bootstrap.mlockall: true/" /etc/elasticsearch/elasticsearch.yml
-    sudo service elasticsearch restart
+    sed -i "s/# index.number_of_shards: 1/index.number_of_shards: 1/" /etc/elasticsearch/elasticsearch.yml
+    sed -i "s/# index.number_of_replicas: 0/index.number_of_replicas: 0/" /etc/elasticsearch/elasticsearch.yml
+    sed -i "s/# bootstrap.mlockall: true/bootstrap.mlockall: true/" /etc/elasticsearch/elasticsearch.yml
+    service elasticsearch restart
 
     # Configure to start up Elasticsearch automatically
-    sudo update-rc.d elasticsearch defaults 95 10
+    update-rc.d elasticsearch defaults 95 10
+    
+    
+    # Install Mail catcher
+    apt-get install ruby2.0 -y
+    gem install mailcatcher
+    
     
     #
     # remember that the extra software is installed
